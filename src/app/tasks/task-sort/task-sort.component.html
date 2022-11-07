@@ -1,0 +1,32 @@
+<h2>Lista</h2>
+<hr>
+<div class="row">
+  <div class="col-1">
+    <button type="button" class="btn btn-primary mb-2" [routerLink]="['/']" >Voltar</button>
+  </div>
+</div>
+<section>
+  <div *ngIf="tasks.length == 0" class="alert alert-warning" role="alert">
+    Nenhum usuário cadastrado!
+  </div>
+  <ul *ngIf="tasks.length > 0" class="list-group">
+    <li class="list-group-item " *ngFor="let task of tasks,let i = index">
+      <div class="task-item">
+        <div class="form-group form-check">
+          {{i+1}} -&nbsp;
+          <input type="checkbox" class="form-check-input" [(ngModel)]="task.completed" (change)="checkChange(task)">
+        </div>
+        <div [innerHTML]="task.description" class="task-item-description" [ngClass]="task.completed ? 'task-completed' : ''" >
+        </div>
+        <!-- <div>
+          <button type="button" [routerLink]="['/edit',task.id]" class="btn btn-primary me-1">Alterar</button>
+        </div>
+        <div>
+          <button type="button" class="btn btn-danger" (click)="remove(task)">Excluir</button>
+        </div> -->
+
+      </div>
+    </li>
+  </ul>
+
+</section>

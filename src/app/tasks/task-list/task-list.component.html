@@ -1,0 +1,23 @@
+<h2>Usuários</h2>
+<hr>
+
+<div class="row">
+  <div class="col-1">
+    <button type="button" class="btn btn-primary mb-2" [routerLink]="['/new']" >Adicionar</button>
+  </div>
+  <div class="col-3">
+    <button type="button" class="btn btn-success mb-2" [routerLink]="['/sortear']" >Sortear</button>
+  </div>
+</div>
+
+<section>
+  <div *ngIf="tasks.length == 0" class="alert alert-warning" role="alert">
+    Nenhum usuário cadastrado!
+  </div>
+  <ul *ngIf="tasks.length > 0" class="list-group">
+    <li class="list-group-item " *ngFor="let task of tasks">
+      <app-task-list-item [task]="task" class="task-item"></app-task-list-item>
+    </li>
+  </ul>
+
+</section>
